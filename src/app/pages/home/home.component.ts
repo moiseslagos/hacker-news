@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
             return { ...news, ...merge };
           });
         }
+        this.temp_news = this.list_news;
         console.log(this.list_news);
         this.preload = false;
       },
