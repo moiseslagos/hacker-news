@@ -27,6 +27,7 @@
     display: flex;
     align-items: center;
     font-size: 0.8rem;
+    cursor: pointer;
     .title{
       padding-left: 0.7rem;
     }
@@ -41,11 +42,34 @@
   display: block;
 }
 
-.select-drop:hover .select-drop-btn {
-  border:1px solid #1797ff;
-  color: #1797ff;
+.select-drop:hover {
+  .select-drop-btn {
+    border:1px solid #1797ff;
+    color: #1797ff;
+    span{
+      transform: rotate(180deg);
+    }
+  }
+  
 }
-
 .no-info{
   text-align: center;
+}
+
+@media (min-width: 980px) {
+  .btns-actions{
+    width: 196px;
+    margin: 0 auto;
+  }
+  .select-drop{
+    width: 240px;
+  }
+  .select-drop-btn{ 
+    text-align: left;
+    position: relative;
+    span{
+      position: absolute;
+      right: 0.8rem;
+    }
+  }
 }

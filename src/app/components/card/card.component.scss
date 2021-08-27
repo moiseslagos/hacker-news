@@ -4,6 +4,8 @@
   display: flex;
   overflow: hidden;
   background: #fff;
+  opacity: 1;
+  transition: all ease 300ms;
   .card-body{
     padding:1rem;
     width: 100%;
@@ -29,6 +31,16 @@
     background: rgba($color: #606060, $alpha: 0.06);
     button{
       width: 60px;
+    }
+  }
+}
+
+@media (min-width: 980px) {
+  .card{
+    min-height: 97px;
+    &:hover{
+      opacity: .4;
+      transition: all ease 300ms;
     }
   }
 }

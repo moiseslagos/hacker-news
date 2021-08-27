@@ -10,13 +10,14 @@ import { News } from '../../interfaces/news';
 export class HomeComponent implements OnInit {
 
   lista_language = [
-    { id:0, language: 'Angular', ico: '/assets/images/ico-angular.jpg' },
-    { id:1, language: 'React', ico: '/assets/images/ico-react.jpg' },
-    { id:2, language: 'Vuejs', ico: '/assets/images/ico-vuejs.jpg' },
+    { id:0, language: 'Angular', ico: '/assets/images/ico-angular.png' },
+    { id:1, language: 'React', ico: '/assets/images/ico-react.png' },
+    { id:2, language: 'Vuejs', ico: '/assets/images/ico-vuejs.png' },
   ];
   public isValue:string = 'all';
   public language:string = 'angular';
   public currentPage:number = 0;
+  public preload:boolean = false;
 
   public list_news:News[] = [];
   public temp_news:News[] = [];
@@ -41,6 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadNews( language:string, page:number=0 ){
+    this.preload = true;
     if(this.favorites){
       this.favesLocalStorage = this.favorites;
     }
@@ -50,16 +52,13 @@ export class HomeComponent implements OnInit {
 
         this.list_news = this.list_news.filter( news => news.story_id !== null );        
         if(this.favorites){
-          //news = result.hits.map((news, i) => Object.assign({}, news, favorites[i]));   
           this.list_news = this.list_news.map(news => {
             const merge = this.favorites.find(fav => fav.story_id === news.story_id);
             return { ...news, ...merge };
           });
-          //console.log(resulta);
         }
-        //this.list_news = news;
-        //this.temp_news = this.list_news;
         console.log(this.list_news);
+        this.preload = false;
       },
       (error)=>{
         //error notification

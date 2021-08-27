@@ -9,3 +9,13 @@
     font-family: 'Libre Baskerville', serif;
   }
 }
+@media (min-width: 980px) {
+  .header{
+    text-align: left;
+    height: 114px;
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    padding: 0;
+  }
+}
