@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Roboto:wght@400;500&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: 'Roboto', sans-serif;
+}
+a{
+  color:inherit;
+  text-decoration: none;
+}
+button{
+  background:inherit;
+  font-family: inherit;
+  border:0
+}
+.mt-1{
+  padding-top: 1rem;
+}
+.mb-1{
+  padding-bottom: 1rem;
+}
+.wrapper-content{
+  padding:0 1rem;
+}
+
+.btn{
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  border:1px solid #d6d6d6;
+  &_active{
+    border:1px solid #1797ff;
+    color: #1797ff;
+  }
+  &_full{
+    width: 100%;
+  }
+}
+
+.preload{
+  &::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 2px solid #eee;
+    border-top: 2px solid #e60000;
+    display: inline-block;
+    border-radius: 50%;
+    animation-name: c;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+.preload-center{
+  &::after{
+    position: absolute;top: 50%;left: 50%;margin-left: -10px;margin-top: -10px;
+  }
+}

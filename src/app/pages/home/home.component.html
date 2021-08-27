@@ -1,0 +1,34 @@
+<div class="btns-actions mt-1 mb-1">
+  <button class="btn btn_full" [ngClass]="{ 'btn_active' : isValue == 'all' }" (click)="showNewsOption('all')">All</button>
+  <button class="btn btn_full" [ngClass]="{ 'btn_active' : isValue == 'myFaves' }" (click)="showNewsOption('myFaves')">My Faves</button>
+</div>
+
+
+<div class="select-drop mb-1">
+  <button class="btn btn_full select-drop-btn ">
+    Select your news
+  </button>
+    
+  <div class="dropdown-content">
+    <button *ngFor="let item of lista_language" (click)="changeLanguage(item.language)">
+      <img src="{{item.ico}}" width="24"> 
+      <div class="title">{{item.language}}</div>
+    </button>
+  </div>
+</div>
+
+<ng-container *ngIf="list_news.length else noNews">
+  <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+    <!--results cards-->
+    <div *ngFor="let item of list_news; let i = index">
+      <app-card (save_favorite)="faves($event)" [favorite]="item.favorite" [time]="item.created_at_i" [story_id]="item.story_id" [story_url]="item.story_url" [title]="item.story_title" [author]="item.author"></app-card>
+    </div>
+    <!--end result cards-->
+  </div>
+  <div class="preload preload-center"></div>
+</ng-container>
+
+
+<ng-template #noNews>
+  <p class="no-info">Ups! no news 😨</p>
+</ng-template>
