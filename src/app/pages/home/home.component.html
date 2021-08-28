@@ -3,9 +3,8 @@
   <button class="btn btn_full" [ngClass]="{ 'btn_active' : isValue == 'myFaves' }" (click)="showNewsOption('myFaves')">My Faves</button>
 </div>
 
-
-<div class="select-drop mb-1">
-  <button class="btn btn_full select-drop-btn ">
+<div class="select-drop mb-1" [ngClass]="showDropDown ? 'dropdown-active' : ''">
+  <button class="btn btn_full select-drop-btn" (mousedown)="showDropDown=!showDropDown">
     Select your news
     <span>
       <svg xmlns="https://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7">
@@ -13,15 +12,14 @@
       </svg>
     </span>
   </button>
-    
-  <div class="dropdown-content">
+  <div class="dropdown-content" >
     <button *ngFor="let item of lista_language" (click)="changeLanguage(item.language)">
       <img src="{{item.ico}}" width="24"> 
       <div class="title">{{item.language}}</div>
     </button>
   </div>
 </div>
-<div class="preload preload-center" *ngIf="preload"></div>
+
 <ng-container *ngIf="list_news.length else noNews">
   <div class="search-results grid-2" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
     <!--results cards-->
@@ -30,7 +28,7 @@
     </div>
     <!--end result cards-->
   </div>
-  
+  <div class="preload preload-center" *ngIf="preload"></div>
 </ng-container>
 
 

@@ -38,11 +38,17 @@
   background-color: #f1f1f1
 }
 
-.select-drop:hover .dropdown-content {
+.dropdown-active .dropdown-content{
   display: block;
 }
-
-.select-drop:hover {
+.select-drop-btn {
+  position: relative;
+  span{
+    position: absolute;
+    right: 0.8rem;
+  }
+}
+.dropdown-active {
   .select-drop-btn {
     border:1px solid #1797ff;
     color: #1797ff;
@@ -50,7 +56,6 @@
       transform: rotate(180deg);
     }
   }
-  
 }
 .no-info{
   text-align: center;
@@ -66,10 +71,5 @@
   }
   .select-drop-btn{ 
     text-align: left;
-    position: relative;
-    span{
-      position: absolute;
-      right: 0.8rem;
-    }
   }
 }
